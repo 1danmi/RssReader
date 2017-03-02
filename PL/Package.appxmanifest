@@ -7,14 +7,14 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="291edf77-cb1e-43a3-a777-32466d9de2ca"
+    Name="f25c4a91-52ab-4f90-97e2-009df79f0fed"
     Publisher="CN=Daniel"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="291edf77-cb1e-43a3-a777-32466d9de2ca" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="f25c4a91-52ab-4f90-97e2-009df79f0fed" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>RssReader</DisplayName>
+    <DisplayName>PL</DisplayName>
     <PublisherDisplayName>Daniel</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -30,12 +30,12 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="RssReader.App">
+      EntryPoint="PL.App">
       <uap:VisualElements
-        DisplayName="RssReader"
+        DisplayName="PL"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="RssReader"
+        Description="PL"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
