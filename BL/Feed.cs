@@ -45,7 +45,7 @@ namespace BL
             int i = 1;
             foreach (var feed in feeds)
             {
-                var response = _EsClientDAL.Current.Index(new BE.Feed(feed.Name, feed.LinkAsString, i++), f => f.Type(DTO.Constants.DEFAULT_INDEX_TYPE));
+                var response = _EsClientDAL.Current.Index(new BE.Feed(feed.Name, feed.LinkAsString, i++), f => f.Type(BE.Constants.DEFAULT_INDEX_TYPE));
                 if (response.Created == false && response.ServerError != null)
                     throw new Exception(response.ServerError.Error.ToString());
             }
@@ -59,7 +59,7 @@ namespace BL
                                    .Search<BE.Feed>(s => s.Query(q => q.MatchAll() && queryById))
                                    .Hits;
 
-            return (hits as IEnumerable<IHit<BE.Feed>>)?.Count;
+            return (hits as IReadOnlyCollection<IHit<BE.Feed>>).Count();
         }
 
         /// <summary>

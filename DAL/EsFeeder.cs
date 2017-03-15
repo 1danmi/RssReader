@@ -40,10 +40,10 @@ namespace DAL
             var node = new Uri(ES_URI);
 
             _settings = new ConnectionSettings(node);
-            _settings.DefaultIndex(DTO.Constants.DEFAULT_INDEX);
-            _settings.MapDefaultTypeNames(m => m.Add(typeof(DTO.Feed), DTO.Constants.DEFAULT_INDEX_TYPE));
+            _settings.DefaultIndex(BE.Constants.DEFAULT_INDEX);
+            _settings.MapDefaultTypeNames(m => m.Add(typeof(BE.Feed), BE.Constants.DEFAULT_INDEX_TYPE));
             Current = new ElasticClient(_settings);
-            Current.Map<DTO.Feed>(m => m.AutoMap());
+            Current.Map<BE.Feed>(m => m.AutoMap());
 
         }
 
