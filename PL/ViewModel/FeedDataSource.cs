@@ -58,7 +58,7 @@ namespace PL.ViewModel
             var feeds = new List<FeedViewModel>();
             for (int id = 1; id <= feedData.GetSumFeeds(); id++)
             {
-                List<DTO.Feed> typedList = feedData.QueryById(id.ToString());
+                List<BE.Feed> typedList = feedData.QueryById(id.ToString());
                 feeds.Add(new FeedViewModel() { Name = typedList.First().Name, LinkAsString = typedList.First().Link });
             }
             return feeds;
@@ -80,7 +80,7 @@ namespace PL.ViewModel
                 feedViewModel.Name = String.IsNullOrEmpty(feedViewModel.Name) ? feed.Title.Text : feedViewModel.Name;
                 feedViewModel.Description = feed.Subtitle?.Text ?? feed.Title.Text;
 
-                feed.Items.Select(item => new ArticleViewModel
+                feed.Items.Select(item => new BE.ArticleViewModelBase
                 {
                     Title = item.Title.Text,
                     Summary = item.Summary == null ? string.Empty :
@@ -93,7 +93,7 @@ namespace PL.ViewModel
                 {
                     var favorites = AppShell.Current.ViewModel.FavoritesFeed;
                     var existingCopy = favorites.Articles.FirstOrDefault(a => a.Equals(article));
-                    article = existingCopy ?? article;
+                    article = existingCopy ??  article;
                     if (!feedViewModel.Articles.Contains(article)) feedViewModel.Articles.Add(article);
                 });
                 feedViewModel.IsInError = false;
@@ -126,7 +126,7 @@ namespace PL.ViewModel
                 feedViewModel.Name = String.IsNullOrEmpty(feedViewModel.Name) ? feed.Title.Text : feedViewModel.Name;
                 feedViewModel.Description = feed.Subtitle?.Text ?? feed.Title.Text;
 
-                feed.Items.Select(item => new ArticleViewModel
+                feed.Items.Select(item => new BE.ArticleViewModelBase
                 {
                     Title = item.Title.Text,
                     Summary = item.Summary == null ? string.Empty :
@@ -142,18 +142,18 @@ namespace PL.ViewModel
                     article = existingCopy ?? article;
                     if (!feedViewModel.Articles.Contains(article))
                     {
-                        if (Query.nameOfArticle.Equals(""))
+                        if (BE.Query.nameOfArticle.Equals(""))
                             feedViewModel.Articles.Add(article);
 
-                        else if (article.Title.Contains(Query.nameOfArticle) || article.Summary.Contains(Query.nameOfArticle))
+                        else if (article.Title.Contains(BE.Query.nameOfArticle) || article.Summary.Contains(BE.Query.nameOfArticle))
                             feedViewModel.Articles.Add(article);
                     }
                     if (feedViewModel.Articles.Contains(article))
                     {
-                        if (Query.nameOfArticle.Equals(""))
+                        if (BE.Query.nameOfArticle.Equals(""))
                             feedViewModel.Articles.Add(article);
 
-                        else if (!article.Title.Contains(Query.nameOfArticle) && !article.Summary.Contains(Query.nameOfArticle))
+                        else if (!article.Title.Contains(BE.Query.nameOfArticle) && !article.Summary.Contains(BE.Query.nameOfArticle))
                             feedViewModel.Articles.Remove(article);
                     }
                 });

@@ -130,7 +130,7 @@ namespace PL.ViewModel
                     OnPropertyChanged(nameof(IsCurrentFeedFavoritesFeed));
                     if (_currentFeed.Articles.Count > 0)
                     {
-                        CurrentArticle = _currentFeed.Articles.First();
+                        CurrentArticle = _currentFeed.Articles.First() as ArticleViewModel;
                     }
                     else
                     {
@@ -149,7 +149,7 @@ namespace PL.ViewModel
                                 // change notification occurs for CurrentArticle before the UI has finished loading.
                                 var withoutAwait = CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
                                     Windows.UI.Core.CoreDispatcherPriority.Normal,
-                                    () => CurrentArticle = _currentFeed.Articles.First());
+                                    () => CurrentArticle = _currentFeed.Articles.First() as ArticleViewModel);
                             }
                         };
                         _currentFeed.Articles.CollectionChanged += handler;

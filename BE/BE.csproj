@@ -114,6 +114,7 @@
     <Compile Include="Feed.cs" />
     <Compile Include="FeedViewModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Query.cs" />
     <Compile Include="RangeFilter.cs" />
     <EmbeddedResource Include="Properties\BE.rd.xml" />
   </ItemGroup>
