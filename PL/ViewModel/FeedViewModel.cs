@@ -39,5 +39,10 @@ namespace PL.ViewModel
 
         private const string NOT_HTTP_MESSAGE = "Sorry. The URL must begin with http:// or https://";
         private const string INVALID_URL_MESSAGE = "Sorry. That is not a valid URL.";
+
+        internal object RefreshAsync(object token)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
